@@ -12,3 +12,18 @@ before_install:
 #if we execute above command without -- --coverage option then we won't get our test results and cursor back. This is to get the test results and cursor back.
 script:
     - docker run 40thieves/docker-react npm run test -- --coverage
+
+#deploy our code to AWS.
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "docker"
+    env: "Dockerreact-env"
+    bucket_name: "elasticbeanstalk-us-east-2-878492185187"
+    bucket_path: "docker-react"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: 
+        secure: "$AWS_SECRET_KEY"
+    

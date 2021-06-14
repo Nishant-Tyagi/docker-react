@@ -1,0 +1,14 @@
+#root access required.
+sudo: required
+#docker installation needed.
+services:
+    - docker
+    
+#building the docker image.    
+before-install:
+    - docker build -t 40thieves/docker-react -f Dockerfile.dev .
+    
+#series of commands to run test scripts to be executed.
+script:
+    - docker run 40thieves/docker-react npm run test -- --coverage
+#if we execute above command without -- --coverage option then we won't get our test results and cursor back. This is to get the test results and cursor back.

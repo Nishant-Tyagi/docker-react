@@ -1,0 +1,17 @@
+version: '3'
+services:
+    web:
+        build: 
+            context: .
+            dockerfile: Dockerfile.dev
+        ports:
+            - "3000:3000"
+        volumes:
+            - C:\Nishant\Project\Docker_project\frontend:/app
+    tests:
+        build: 
+            context: .
+            dockerfile: Dockerfile.dev
+        volumes:
+            - C:\Nishant\Project\Docker_project\frontend:/app
+        command: ["npm","run","test"]

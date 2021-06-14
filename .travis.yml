@@ -5,7 +5,7 @@ services:
     - docker
     
 #building the docker image.    
-before-install:
+before_install:
     - docker build -t 40thieves/docker-react -f Dockerfile.dev .
     
 #series of commands to run test scripts to be executed.

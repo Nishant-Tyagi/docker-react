@@ -11,7 +11,7 @@ before_install:
 #series of commands to run test scripts to be executed.
 #if we execute above command without -- --coverage option then we won't get our test results and cursor back. This is to get the test results and cursor back.
 script:
-    - docker run 40thieves/docker-react npm run test -- --coverage --forceExit
+    - docker run -e CI=true stephengrider/docker-react npm run test
 
 #deploy our code to AWS.
 deploy:
@@ -24,6 +24,5 @@ deploy:
     on:
         branch: master
     access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: 
-        secure: "$AWS_SECRET_KEY"
+    secret_access_key: AWS_SECRET_KEY
     
